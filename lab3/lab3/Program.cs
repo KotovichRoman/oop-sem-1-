@@ -22,8 +22,8 @@ namespace lab3
             }
         }
         public readonly int Phone;
-        public int[] Pass;
-        static int[] PassForStatic; //статическое поле
+        public int[] Pass = new int[3];
+        public static int[] PassForStatic = new int[3]; //статическое поле
 
         public Abiturient(int Id, string addSurname, string addName, string addPatronymic,
             string addAddres, int addPhone, int[] addPass) //конструктор с параметрами
@@ -61,18 +61,21 @@ namespace lab3
             PassForStatic[2] = 8;
         }
 
-        public Abiturient(string Surname, string Name, string Patronymic,
-            string Addres, int Phone, int[] Pass)
+        public Abiturient(string surname, string name, string patronymic,
+            string addres, int phone, int[] pass)
         {
             Id++;
-            this.Surname = Surname;
-            this.Name = Name;
-            this.Patronymic = Patronymic;
-            this.Addres = Addres;
-            this.Phone = Phone;
-            foreach (var element in Pass)
+            this.Surname = surname;
+            this.Name = name;
+            this.Patronymic = patronymic;
+            this.Addres = addres;
+            this.Phone = phone;
+
+            int i = 0;
+            foreach (var element in pass)
             {
-                this.Pass[element] = Pass[element];
+                this.Pass[i] = element;
+                i++;
             }
         }
 
@@ -88,11 +91,11 @@ namespace lab3
         }
 
         private int sum;
-        public void middle_pass(ref int[] Pass, out int sumPass)
+        public void middle_pass(ref int[] pass, out int sumPass)
         {
-            foreach (int element in Pass)
+            foreach (int element in pass)
             {
-                sum += Pass[element];
+                sum += element;
             }
 
             sumPass = sum / Pass.Length;
@@ -111,7 +114,7 @@ namespace lab3
         public int MaxPass()
         {
             Array.Sort(Pass);
-            return Pass[Pass.Length];
+            return Pass[Pass.Length - 1];
         }
 
         public int MinPass()
