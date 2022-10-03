@@ -103,9 +103,11 @@ namespace lab3
 
         public int SumPass()
         {
+            int sum = 0;
+
             foreach (int element in Pass)
             {
-                sum += Pass[element];
+                sum += element;
             }
 
             return sum;
