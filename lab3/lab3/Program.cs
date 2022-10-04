@@ -34,9 +34,12 @@ namespace lab3
             Patronymic = addPatronymic;
             Addres = addAddres;
             Phone = addPhone;
+
+            int i = 0;
             foreach (int element in addPass)
             {
-                Pass[element] = addPass[element];
+                Pass[0] = element;
+                i++;
             }
         } 
 
@@ -127,7 +130,15 @@ namespace lab3
 
         public void about()
         {
-            Console.WriteLine($"{Id}\n{Surname}\n{Name}\n{Patronymic}\n{Addres}\n{Phone}\n{Pass}\n\n");
+            Console.WriteLine($"{Id}\n{Surname}\n{Name}\n{Patronymic}\n{Addres}\n{Phone}");
+
+            foreach(int element in Pass)
+            {
+                Console.Write($"{element}, ");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
         }
         
         private int n {get;}
@@ -150,7 +161,7 @@ namespace lab3
 
         public override string ToString()
         {
-            return ($"\n{this.Surname}\n{this.Name}\n{this.Patronymic}\n{this.Addres}\n{this.Phone}\n{Pass}\n\n");
+            return ($"\n{this.Surname}\n{this.Name}\n{this.Patronymic}\n{this.Addres}\n{this.Phone}\n");
         }
     }
     
@@ -182,6 +193,8 @@ namespace lab3
             abiturient2.GetHashCode();
             abiturient1.MaxPass();
 
+            Console.WriteLine("----------------------------всё плохо--------------------------");
+
             Abiturient[] arrayOfAbiturients = new Abiturient[] {abiturient1, abiturient2, abiturient3};
 
             for (int i = 0; i < arrayOfAbiturients.Length; i++)
@@ -194,6 +207,8 @@ namespace lab3
                     }
                 }
             }
+
+            Console.WriteLine("-------------------------------------сравнение оценочек-----------------");
 
             int number = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < arrayOfAbiturients.Length; i++)
